@@ -1,0 +1,54 @@
+
+			ファイル一覧
+
+  ドキュメントのうち (ito) と付記したものは私(伊藤)が書いたものです。
+その他のものはすべて太田 純さん((株)リコー ソフトウェア事業部)が書いた
+ものです。
+
+----- 各 OS で共有するファイル -----
+
+MANIFEST	配布ファイル一覧(ito)
+README		今回の配布内容についての説明(ito)
+README.1st	最初に読むドキュメント
+README.doc	オリジナルの日本語版の配布内容についての説明
+options.doc	起動時オプション、環境オプションの説明
+rogue.doc	ローグの遊び方についてのドキュメント
+rogue.man	オリジナルのオンラインマニュアルの和訳
+
+rogue.h		ローグ・クローン２ 日本語版 1.3aS のソースプログラム
+curses.c	〃
+hit.c		〃
+init.c		〃
+invent.c	〃
+level.c		〃
+machdep.c	〃
+main.c		〃
+message.c	〃
+monster.c	〃
+move.c		〃
+object.c	〃
+pack.c		〃
+play.c		〃
+random.c	〃
+ring.c		〃
+room.c		〃
+save.c		〃
+score.c		〃
+spechit.c	〃
+throw.c		〃
+trap.c		〃
+use.c		〃
+zap.c		〃
+Makefile.nix	UNIX 用の Makefile
+
+----- MS-DOS に依存するファイル -----
+
+Makefile.tcc	Turbo C 1.5 用の Makefile（参考）
+playmenu.c	ローグクローン２　プレイヤーメニューのソース（参考）
+install.uue	Makefile を作成するバッチファイル（install.bat）
+batchcom.uue	バッチファイル用ユーティリティー（batchcom.com）(動きません)
+
+----- メッセージファイル -----
+
+mesg		オリジナルの日本語版ローグ・クローン２のメッセージ
+mesg_E		オリジナルの英語版ローグ・クローン２のメッセージ

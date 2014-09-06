@@ -1,0 +1,632 @@
+		ローグ メッセージファイル
+
+漢字コードは EUC(UNIX), Shift-JIS(MS-DOS, HUMAN) である必要があります。
+エスケープシーケンスなどのコントロールコードを含めることはできません。
+文字列の長さは最大 79 バイトです。
+
+メッセージのバージョン(play.c)
+1	"Message English version"
+持ち物の種類
+2	"food "		"食糧"
+3	"scroll%s "	"巻き物"
+4	"potion%s "	"水薬"
+5	"wand "		"つえ"
+6	"staff "	""
+7	"armor "	"よろい"
+8	"ring "		"指輪"
+9	"amlet "	"魔除け"
+file: main.c
+10	"Hello %s, welcome to the Dungeons of Doom..." "やあ、%s。 運命の洞窟へようこそ..."
+
+file: init.c
+--More-- (now only in message.c)
+11	"--More--"	"［続く］"
+byebye_string: quit from interrupt
+12	"Okay, bye bye!"	"それでは、またね。"
+init()
+pen name 'pn' is NULL or longer than 30
+13	"Hey!  Who are you?"	"おたく、いったい誰なの？"
+screen too small (UNIX)
+14	"Must be played on 24x80 screen" "ごめん！ 画面の大きさは最低２４×８０なんだ。"
+onintr()
+15	"Interrupt"	"割り込みがあった。"
+option ('o' command)
+16	"Your favorite fruit"	"好きな果物"
+env_get_value
+17	"Cannot alloc() memory" "メモリーが足りません。 ゲームを終了します。"
+
+file: hit.c
+mon_hit()	怪物の攻撃
+18	"The %s misses" "%sの攻撃はそれた。 "
+19	"The %s hit"	"%s%sは命中した。 "
+20	""
+21	""	"の攻撃"
+rogue_hit()	プレイヤーの攻撃
+22	"You miss.  "	"%sの攻撃はそれた。 "
+23	"You hit.  "	"%sの攻撃は命中した。 "
+mon_damage()
+24	"Defeated the %s"	"%sを倒した。 "
+fight()
+25	"I see no monster there"	"その方向には怪物がいない。"
+
+file: invent.c
+inventory()
+26	"Your pack is empty"		"持ちものは、１つも持っていない。"
+get_desc()
+27	"The Amulet of Yendor "		"イェンダーの魔除け"
+28	"%d pieces of gold"		"個の金塊"
+29	"%d "	(よろい以外のもの)	"本の"
+30	"%d rations of "		"袋の"	(食糧)
+31	"Some "	(１袋のとき)	"個の"	(こけもも)
+32	"some "	(１袋のとき)	"つの"	(その他の持ちもの)
+33	"titled "			"という"	(巻き物)
+34	"called "  (discoverd()では使われない) "と呼ぶ"	(巻き物、水薬、杖、指輪) (discoverd() でも)
+35	"(weapon in hand)"	"（使っている）"	(武器を)
+36	"(being worn)"		"（着ている）"	(よろいを)
+37	"(on left hand)"	"（左手）"	(指輪)
+38	"(on right hand)"	"（右手）"
+get_wand_and_ring_materials()
+39	""	not used	"の"	(杖の材質: ...'の'杖)
+40	""	not used	"の"	(指輪の材質: ...'の'指輪)
+single_inv()
+41	"Inventory what?"	"調べる持ちものの種類は？"
+42	"No such item."		"それは持っていない。"
+inv_armor_weapon()
+43	"Not wielding anything"	"武器は使っていない。"
+44	"Not wearing anything"	"よろいは着ていない。"
+discoverd()
+45	"What type?"		"どの種類のものですか？"
+46	"Nothing discovered"	"知っているものは、何もない。"
+47	" Nothing about %s"	"  （知っている%sはない）"
+
+file: level.c
+drop_check()
+48	"You're floating in the air!"	"降りられない！"
+49	"I see no way down"		"降りる階段がない。"
+check_up()
+50	"I see no way up"		"登る階段がない。"
+51	"Your way is magically blocked"	"階段は何者かの手によってふさがれている。"
+52	"You feel a wrenching sensation in your gut"	"胃袋をねじ切られるような気分がした。"
+add_exp()
+53	"Welcome to level %d"	英語のときは %d	"レベル%sへようこそ。"
+show_average_hp()
+54	"R-Hp: %d.%02d, E-Hp: %d.%02d (!: %d, V: %d)"	"基本上昇率: %d.%02d, 実効上昇率: %d.%02d (!: %d, V: %d)"
+
+file: message.c
+get_direction()
+55	"Direction?"	"方角は？"
+print_stats()
+56	"Level: "	"階: "	(4バイト, 英語の時は7文字)
+57	"Gold: "	"金塊: " (6バイト)
+58	"Hp: "		"体力: " (6バイト, 英語の時は4文字)
+59	"Str: "		"強さ: " (6バイト, 英語の時は5文字)
+60	"Arm: "		"守備: " (6バイト, 英語の時は5文字)
+61	"Exp: "		"経験: " (6バイト, 英語の時は5文字)
+get_status_line()
+62	"" "階:    金塊:        体力:          強さ:        守備:    経験:                "	(日本語の時のみ)
+monster.c
+mon_name()
+63	"something"	"何者か"
+create_monster()
+64	"You hear a faint cry of anguish in the distance"	"遠くから、かすかな怒りの叫びが聞こえる。"
+aggravate()
+65	"You hear a high pitched humming noise"	"どこからか、かん高いうなり声が聞こえてくる。"
+
+file: move.c
+toplevel
+66	"You can move again"	"ようやく体が自由になった。"
+one_move_rogue()
+67	"You are being held"	"怪物につかまえられて、逃げられない。"
+68	"You are still stuck in the bear trap"	"熊のわなが、なかなかはずれない。"
+69	""	(英語では無意味)	"を手に入れた。"
+70	"Moved onto "			"の上にいる。"
+check_hunger()
+71	"Hungry"	"空腹"	(4バイトまで、英語では6文字まで）
+72	"Hungry"	"空腹になってきた。"
+73	"Weak"		"飢餓"	(4バイトまで、英語では6文字まで）
+74	"Weak"		"空腹のせいで力がなくなってきた。"
+75	"Faint"		"瀕死"	(4バイトまで、英語では6文字まで）
+76	"Faint"		"空腹で、もう死にそうだ。"
+77	"You faint"	"空腹で、目がくらくらする。"
+reg_move()
+78	"You float gently to the ground"	"ようやく地面に足がついた。"
+79	"You feel yourself slowing down" "素早くなる薬の効き目がなくなった。"
+
+file: object.c
+name_of()
+80	"unknown "	"？？？" (バグ対策？)
+new_object_for_wizard()
+81	"Pack full"	"これ以上は物を持てない。"
+82	"Type of object?" "どんなものですか？"
+83	"Which kind of %s?" "%sの種類は？"
+84	"weapon"	"武器"
+
+file: pack.c
+toplevel
+85	"You can't, it appears to be cursed" "呪われているので、それはできない！"
+pick_up()
+86	"The scroll turns to dust as you pick it up" "拾いあげたとたん、巻き物はちりになってしまった。"
+87	"Pack too full"		"もうこれ以上、物は持てない。"
+drop()
+88	"There's already something there""そこには、すでに何かが置かれている。"
+89	"You have nothing to drop"	"落とす物を持っていない。"
+90	"Drop what?"			"落とす物は？"
+91	"No such item."			"それは持っていない。"
+92	"Dropped "			"を落とした。"
+pack_letter()
+93	"Nothing appropriate"		"それは１つも持っていない。"
+take_off()
+94	"Was wearing "		"を脱いだ。"
+95	"Not wearing any"	"よろいを着ていない。"
+wear()
+96	"You're already wearing some"	"他のよろいを着ている。"
+97	"Wear what?"			"どのよろいを？"
+98	"No such item."			"それは持っていない。"
+99	"You can't wear that"		"それはよろいではない。"
+100	"Wearing "			"を身につけた。"
+wield()
+101	"Wield what?"		"どの武器を？"
+102	"No such item."		"それは持っていない。"
+103	"You can't wield %s"	"%sを武器にすることはできない。"
+104	"armor"			"よろい"
+105	"rings"			"指輪"
+106	"In use"		"その武器はもう使っている。"
+107	"Wielding "		"に持ちかえた。"
+call_it()
+108	"Call what?"	"呼び名をつけるものは？"
+109	"No such item."	"それは持っていない。"
+110	"Surely you already know what that's called"	"それには呼び名をつけることができない。"
+111	"Call it:"		"呼び名は？"
+kick_into_pack()
+112	"Nothing here"		"ここには、何もない。"
+113	"You're floating in the air!"	"拾うことができない！"
+114	"" (英語では無意味)	"を手に入れた。 "
+file: play.c
+toplevel
+115	"Unknown command"	"コマンドが違います。"
+
+ヘルプメッセージ
+116	"?		print help			>   go down a staircase"
+117	"/		identify object			<   go up a staircase"
+118	"h, j, k, l	left, down, up, left		.   rest for a turn"
+119	"y, u, b, n	move diagonally			,   pick something up"
+120	"<SHIFT><dir>	run that way			s   search trap/secret door"
+121	"<CTRL><dir>	run till adjacent		i   inventory"
+122	"f<dir>		fight till death or near death	I   inventory single item"
+123	"F<dir>		fight till either of you dies	q   quaff potion"
+124	"t<dir>		throw something			r   read scroll"
+125	"m<dir>		move onto without picking up	e   eat food"
+126	"z<dir>		zap a wand in a direction	w   wield a weapon"
+127	"^<dir>		identify trap type		W   wear armor"
+128	"<CTRL>P 	repeat last message		T   take armor off"
+129	"<CTRL>R 	redraw screen			P   put on ring"
+130	"<CTRL>D 	save screen to file		R   remove ring"
+131	"<ESC>		cancel command			d   drop object"
+132	"a		repeat last command		c   call object"
+133	"D		recall what's been discovered	)   print current weapon"
+134	"S		save game			]   print current armor"
+135	"Q		quit				=   print current rings"
+136	"v		print version information	@   print current stats"
+137	"!		shell escape			o   examine/set options"
+
+文字の説明
+138	"You"
+139	"floor of a room"
+140	"wall of a room"
+141	"wall of a room", "door"
+142	"passage"
+143	"staircase"
+144	"secret trap"
+145	"a pile or pot of gold"
+146	"food ration"
+147	"an armor"
+148	"a weapon"
+149	"a scroll"
+151	"a potion"
+152	"a wand or a staff"
+153	"a ring"
+154	"the Amulet of Yendor"
+
+155	"Which character?"	"どんな文字ですか？"
+
+dosshell()
+MS-DOS, HUMAN
+156	"[ Type exit to return to rogue. ]""[ \"exit\" コマンドでローグに戻ります ]"
+	"[ Type \"exit\" to return to rogue. ]"	\ は使えない
+UNIX
+157	"[ Exit shell to return to rogue. ]""[ シェルを終了するとローグに戻ります ]"
+
+file: ring.c
+toplevel
+158	 "Left or right hand?"	"左手(L)、それとも右手(R)？"
+159	"There's no ring on that hand"	"そちらの手には指輪をしていない。"
+put_on_ring()
+160	"Wearing two rings already"	"すでに両手に指輪をしている。"
+161	"Put on what?"			"どの指輪を？"
+162	"No such item."			"それは持っていない。"
+163	"That's not a ring"		"それは指輪ではない。"
+164	"That ring is already being worn""その指輪はもう手にはめている。"
+165	"There's already a ring on that hand""そちらの手にはもう指輪をしている。"
+do_put_on()
+166	"Removed "	"をはずした。"
+inv_rings()
+167	"Not wearing any rings"	"指輪ははめていない。"
+
+file: score.c
+killed_by()
+	"  この長さが最大  "
+168	"Died of"	"寒さにより"	to 172	(英語では ... of/from)
+169	"Died of"	"飢えにより"	to 173
+170	"Killed by a"	"毒矢により"	to 174
+171	"Quit"		"逃亡により"	to 175
+172	"hypothermia"	"死す"
+173	"starvation"	"死す"
+174	"dart"		"死す"
+175	""		"行方不明"
+
+176	"killed by a"	"と戦いて死す"
+
+177	" REST "	"安らかに"
+178	"  IN  "	"眠れ"
+179	"PEACE "	""	(日本語では未使用)
+180	"%ld Au" (英語)		"＄" (日本語)
+181	" with %ld gold"	"。  所持金は＄"
+
+182	"     Congratulations,  you have made it to the light of day!   "
+183	"You have joined the elite ranks of those who have escaped the  "
+184	"Dungeons of Doom  alive.  You journey home  and sell all your  "
+185	"loot at a great profit and are admitted to the Fighters' Guild."
+
+put_scores()
+186	"Cannot read/create score file" "得点ファイルがオープンできません。"
+187	"Top  Ten  Scores"	"最 高 得 点"
+ TOPSCO でないときは "Top  Ten  Rogueists" "最 高 得 点 者"
+188	"Rank   Score   Name"	"順位   得点    名前"
+insert_score()
+189	"with Amulet"	"魔除けを手に、"
+190	" on level %d "		"地下"
+191	""	(英語では無意味)"階にて"
+192	"died of hypothermia"	"寒さにより死す"
+193	"died of starvation"	"飢えにより死す"
+194	"killed by a dart"	"毒矢により死す"
+195	"quit"			"逃亡す"
+196	"a total winner"	"運命の洞窟より生きて帰りたる勇者"
+197	"killed by "		"と戦いて死す"
+sell_pack()
+198	"Value      Item"	" 価格      持ちもの"
+sf_error()
+199	"Sorry, score file is out of order" "得点ファイルが正しくありません。"
+file: spechit.c
+toplevel
+200	"flame"		"ほのお"
+rust()
+201	"The rust vanishes instantly"	"水ごけの湿り気はすぐに消え去った。"
+202	"Your armor weakens"		"よろいはさびてしまった！"
+freeze()
+203	"You are frozen"		"体が凍りついて、動けない！"
+steal_gold()
+204	"Your purse feels lighter"	"金塊を盗まれた！"
+steal_item()
+205	"She stole "	"を盗まれた！"
+check_imitator()
+206	"Wait, that's a %s!"	"おっと、こいつは%sだ！"
+sting()
+207	"The %s's bite has weakened you"	"%sに噛まれて、毒にやられた！"
+drain_life()
+208	"You feel weaker"	"強さが減ってしまった！"
+m_confuse()
+209	"The gaze of the %s has confused you"	"%sににらまれ、頭が混乱してしまった！"
+
+file: throw.c
+throw()
+210	"Throw what?"	"投げる武器は？"
+211	"No such item."	"それは持っていない。"
+throw_at_monster()
+212	"The %s"	"%s"
+213	"misses.  "	"はそれた。 "
+214	"hit.  "	"は命中した。 "
+flop_weapon()
+215	"The %svanishes as it hits the ground"	"%sは地面に落ちると、どこかに消えてしまった。"
+
+file: trap.c
+わなの情報はここに集めました。
+toplevel
+216	"trap door"
+217	"You fell down a trap"
+218	"bear trap"
+219	"You are caught in a bear trap"
+220	"teleport trap"
+221	"Teleport"
+222	"poison dart trap"
+223	"A small dart just hit you in the shoulder"
+224	"sleeping gas trap"
+225	"A strange white mist envelopes you and you fall asleep"
+226	"rust trap"
+227	"A gush of water hits you on the head"
+
+trap_player()
+228	"The trap failed"	"危うく、わなにはまるところだった。"
+id_trap()
+229	"No trap there"		"その方向には、わながない。"
+
+file: use.c
+toplevel
+230	"You have a strange feeling for a moment, then it passes"	"不思議な気分におそわれたが、すぐに消えていった。"
+quaff()
+231	"Quaff what?"	"飲む水薬は？"
+232	"No such item."	"それは持っていない。"
+233	"You can't drink that"	"それは水薬ではない。"
+234	"You feel stronger now, what bulging muscles!"	"何だか、力がわいてくるぞ！"
+235	"This tastes great, you feel warm all over"	"これはうまい！ からだがポカポカしてきた。"
+236	"You begin to feel better"	"気分がよくなった！"
+237	"You begin to feel much better"	"とても気分がよくなった！"
+238	"You feel very sick now"	"この水薬は毒だった！"
+239	"Oh wow, everything seems so cosmic!"	"ふにゃ？ 何もかもが虹色にみえるなあ？"
+240	"What a trippy feeling"		"何だか酔っぱらいみたいな気分だ！"
+241	"Wait, what's going on here. Huh? What? Who?"	"あれ？ ここはどこ？ 私はだれ？"
+242	"You start to float in the air"	"体が宙に浮いてしまった！"
+243	"You feel yourself moving much faster"	"体が素早く動くようになった！"
+244	"Hmm, this potion tastes like %sjuice"	"う〜む、%sジュースのような味がする。"
+read_scroll()
+245	"Read what?"		"読む巻き物は？"
+246	"No such item."		"それは持っていない。"
+247	"You can't read that"	"それは巻き物ではない。"
+248	"You hear a maniacal laughter in the distance"	"遠くから、狂ったような笑い声が聞こえてくる。"
+249	"Your %sglow%s %sfor a moment"	"手に持った%sが、ほんの少し%s輝きに包まれた。"
+250	"Your hands tingle""何だか、手がむずむずする。"	(武器を持っていない時)
+251	"Your armor glows %sfor a moment"	"着ているよろいが、ほんの少し%s輝きに包まれた。"
+252	"Your skin crawls" "何だか、体がむずむずする。"	(よろいを着ていない時)
+253	"This is a scroll of identify"	"これは持ちものを調べる巻き物だった。"
+254	"You fall asleep"	"知らないうちに眠り込んでしまった。"
+255	"Your armor is covered by a shimmering gold shield" "着ているよろいは、輝く金色の光に守られた。"
+256	"Your acne seems to have disappeared"	"何だか、顔がむずむずする。"	(よろいを着ていない時)
+257	"You feel as though someone is watching over you"	"ふっと、誰かに見つめられているような気がした。"
+258	"You feel in touch with the universal oneness"		"ふっと、女神の手に包まれているような気がした。" (幻覚を起こしている時)
+259	"This scroll seems to have a map on it"	"おや、この巻き物には地図が書いてある！"
+idntfy()
+260	"What would you like to identify?"	"調べる持ちものは？"
+261	"No such item, try again"		"それは持っていない。"
+eat()
+262	"Eat what?"		"食べる物は？"
+263	"No such item."		"それは持っていない。"
+264	"You can't eat that"	"それは食べられない。"
+265	"Yum, that tasted good" (英語版にはこれはない)	"う〜む、まったりとしていて、それでいてこくがある。"
+266	"Yum, that tasted good"	"ああ、おいしかった。"
+267	"My, that was a yummy %s"	"おや、なんて甘い%sだ。"
+268	"Yuk, that food tasted awful"	"げげっ、まずい！"
+hold_monster()
+269	"You feel a strange sense of loss"	"急に、体から力が抜けていくような気がした。"
+270	"The monster freezes"			"怪物は動けなくなった！"
+271	"The monsters around you freeze"	"怪物どもは動けなくなった！"
+unhallucinate()
+272	"Everything looks SO boring now"	"やっと、あたりの景色が元どおりになった。"
+unblind()
+273	"The veil of darkness lifts"	"暗闇のとばりが上がってゆく。"
+go_blind()
+274	"A cloak of darkness falls around you"	"深い暗闇のとばりがあたりをおおってゆく。"
+get_ehch_color()
+275	"blue "	"青い"	(着ているよろい、ほんの少し...輝きに包まれた。)
+uncunfuse()
+276	"You feel less trippy now"	"ふたたび、景色が虹色に見えてきた。"
+277	"You feel less confused now"	"ようやく、頭がはっきりしてきた。"
+
+file: zap.c
+zapp()
+278	"Zap with what?"	"振りかざすつえは？"
+279	"No such item."		"それは持っていない。"
+280	"You can't zap with that" "それを振りかざすことはできない。"
+281	"Nothing happens"	"しかし、何も起こらなかった。" (回数オーバー)
+zap_monster()
+282	"Nothing happens"	"しかし、何も起こらなかった。" (役に立たない杖)
+
+怪物
+307	"aquator"
+308	"bat"
+309	"centaur"
+310	"dragon"
+311	"emu"
+312	"venus flytrap"
+313	"griffin"
+314	"hobgoblin"
+315	"ice monster"
+316	"jabberwock"
+317	"kestrel"
+318	"leprechaun"
+319	"medusa"
+320	"nymph"
+321	"orc"
+322	"phantom"
+323	"quagga"
+324	"rattlesnake"
+325	"snake"
+326	"troll"
+327	"black unicorn"
+328	"vampire"
+329	"wraith"
+330	"xeroc"
+331	"yeti"
+332	"zombie"
+
+果物
+333	"slime-mold "	"こけもも"
+
+水薬の色
+334	"blue "
+335	"red "
+336	"green "
+337	"grey "
+338	"brown "
+339	"clear "
+340	"pink "
+341	"white "
+342	"purple "
+343	"black "
+344	"yellow "
+345	"plaid "
+346	"burgundy "
+347	"beige "
+
+水薬の種類
+348	"of increase strength "
+349	"of restore strength "
+350	"of healing "
+351	"of extra healing "
+352	"of poison "
+353	"of raise level "
+354	"of blindness "
+355	"of hallucination "
+356	"of detect monster "
+357	"of detect things "
+358	"of confusion "
+359	"of levitation "
+360	"of haste self "
+361	"of see invisible "
+
+巻き物の種類
+362	"of protect armor "
+363	"of hold monster "
+364	"of enchant weapon "
+365	"of enchant armor "
+366	"of identify "
+367	"of teleportation "
+368	"of sleep "
+369	"of scare monster "
+370	"of remove curse "
+371	"of create monster "
+372	"of aggravate monster "
+373	"of magic mapping "
+
+武器の種類
+374	"short bow "
+375	"darts "
+376	"arrows "
+377	"daggers "
+378	"shurikens "
+379	"mace "
+380	"long sword "
+381	"two handed sword "
+
+よろいの種類
+382	"leather armor "
+383	"ring mail "
+384	"scale mail "
+385	"chain mail "
+386	"banded mail "
+387	"splint mail "
+388	"plate mail "
+
+
+杖の種類
+389	"of teleport away "
+390	"of slow monster "
+391	"of confuse monster "
+392	"of invisibility "
+393	"of polymorph "
+394	"of haste monster "
+395	"of sleep "
+396	"of magic missile "
+397	"of cancellation "
+398	"of do nothing "
+
+指輪の種類
+399	"of stealth "
+400	"of teleportation "
+401	"of regeneration "
+402	"of slow digestion "
+403	"of add strength "
+404	"of sustain strength "
+405	"of dexterity "
+406	"of adornment "
+407	"of see invisible "
+408	"of maintain armor "
+409	"of searching "
+
+杖の材質
+410	"steel "
+411	"bronze "
+412	"gold "
+413	"silver "
+414	"copper "
+415	"nickel "
+416	"cobalt "
+417	"tin "
+418	"iron "
+419	"magnesium "
+420	"chrome "
+421	"carbon "
+422	"platinum "
+423	"silicon "
+424	"titanium "
+425	"teak "
+426	"oak "
+427	"cherry "
+428	"birch "
+429	"pine "
+430	"cedar "
+431	"redwood "
+432	"balsa "
+433	"ivory "
+434	"walnut "
+435	"maple "
+436	"mahogany "
+437	"elm "
+438	"palm "
+439	"wooden "
+
+指輪の材質
+440	"diamond "
+441	"stibotantalite "
+442	"lapis lazuli "
+443	"ruby "
+444	"emerald "
+445	"sapphire "
+446	"amethyst "
+447	"quartz "
+448	"tiger eye "
+449	"opal "
+450	"agate "
+451	"turquoise "
+452	"pearl "
+453	"garnet "
+
+巻き物の音節
+454	"blech "
+455	"foo "
+456	"barf "
+457	"rech "
+458	"bar "
+459	"blech "
+460	"quo "
+461	"bloto "
+462	"woh "
+463	"caca "
+464	"blorp "
+465	"erp "
+466	"festr "
+467	"rot "
+468	"slie "
+469	"snorf "
+470	"iky "
+471	"yuky "
+472	"ooze "
+473	"ah "
+474	"bahl "
+475	"zep "
+476	"druhl "
+477	"flem "
+478	"behil "
+479	"arek "
+480	"mep "
+481	"zihr "
+482	"grit "
+483	"kona "
+484	"kini "
+485	"ichi "
+486	"niah "
+487	"ogr "
+488	"ooh "
+489	"ighr "
+490	"coph "
+491	"swerr "
+492	"mihln "
+493	"poxi "
