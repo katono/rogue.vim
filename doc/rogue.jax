@@ -1,0 +1,182 @@
+*rogue.txt*	データ分離版ローグ・クローンIIの移植
+
+Version: 1.0
+Author: KATO Noriaki <katono123@gmail.com>
+License: MIT License
+
+						*rogue*
+rogue.vim は、データ分離版ローグ・クローンII (rogue_s) を Vim 上で遊べるよう
+に移植した Vim プラグインです。
+
+==============================================================================
+目次						*rogue-contents*
+
+|rogue-howtoplay|		遊び方
+|rogue-options|			オプション
+|rogue-options-highlight|	ハイライトグループ
+
+------------------------------------------------------------------------------
+参考文献					*rogue-references*
+
+|rogue-man|			データ分離版ローグ・クローンII manページ
+
+|rogue-guide|			日本語版ローグ・クローンによる『運命の洞窟』へ
+				の招待
+|rogue-guide-introduction|	ゲームシナリオ（背景と進行）
+|rogue-guide-screen|		画面配置
+|rogue-guide-commands|		コマンド
+|rogue-guide-fighting|		怪物たち、および戦闘
+|rogue-guide-objects|		品物
+|rogue-guide-scoring|		スコア
+
+
+==============================================================================
+遊び方						*rogue-howtoplay*
+
+*:Rogue*
+	ゲームを開始します。
+
+*:RogueScores*
+	スコアを表示して終了します。
+
+*:RogueRestore* [save_file]
+	引数に指定されたセーブファイルを復元して、続きからゲームを再開します。
+	引数を省略した場合、デフォルトのセーブファイル (|g:rogue#file|) を復元
+	します。再開するとセーブファイルは削除されます。
+
+*:RogueResume*
+	"<C-Z>" コマンドによって中断した地点から、ゲームを再開します。
+
+						*rogue-suspend* *rogue-CTRL-Z*
+<C-Z>
+	即座にゲームを中断するコマンドです。このコマンドは rogue.vim オリジナ
+	ルです。
+
+?
+	全コマンドのリストを表示するコマンドです。
+
+/
+	画面上のキャラクターの意味を調べるコマンドです。"/" キーの後で調べたい
+	キャラクターのキーを入力してください。
+
+*
+	プログラムがプレイヤーに何かの選択を要求するときに、* を入力すると選択
+	できるもののリストを表示させることができます。
+	全リストではなく、巻き物、水薬、武器などだけのリストを見たい場合には、
+	* のかわりに ?!=:/)] のいずれかを入力することにより、それぞれ 巻き物、
+	水薬、指輪、食糧、杖、武器、よろい のメニューを表示することができま
+	す。
+
+<Esc>
+	コマンドの途中でキャンセルします。
+
+<Space>
+	画面最上行のメッセージに ［続く］と表示されたときは、スペースを押すと
+	続きのメッセージを読むことができます。
+
+
+その他のコマンドについては、|rogue-guide-commands| を参照してください。
+
+
+==============================================================================
+オプション					*rogue-options*
+
+rogue.vim のオプションは .vimrc に指定できます。
+"o" コマンドや $ROGUEOPTS によるオプション設定はできません。
+
+*g:rogue#name*
+	プレイヤーのニックネームを指定します。
+	デフォルト: $FIGHTER の値 またはログインしているユーザー名
+
+*g:rogue#directory*
+	スコアファイル、セーブファイル、画面ダンプファイルを置くディレクトリを
+	指定します。
+	デフォルト: ホームディレクトリ
+
+*g:rogue#file*
+	デフォルトのセーブファイルを指定します。
+	デフォルト: "rogue_vim.save"
+
+*g:rogue#message*
+	メッセージファイルを指定します。相対パスによる指定の場合は、
+	autoload/rogue ディレクトリからの相対パスとなります。
+	メッセージファイルのフォーマットについては、autoload/rogue/mesg を参照
+	してください。
+	デフォルト: |g:rogue#japanese| が 1 ならば "mesg"、0 ならば "mesg_E"
+
+*g:rogue#japanese*
+	1 を指定した場合、メッセージファイルが日本語であるとみなします。
+	0 を指定した場合、メッセージファイルが日本語でないとみなします。
+	デフォルト: `v:lang` に "ja" を含むならば 1 、そうでないなら 0
+
+*g:rogue#jump*
+	1 を指定した場合、大文字または CTRL 移動コマンドを実行したとき、移動が
+	終了してコマンド待ちになるまで画面の更新を行わないようになります。画面
+	の更新が遅い端末などで設定すると効果的です。
+	0 を指定した場合、一歩毎に画面の更新を行います。
+	デフォルト: 0
+
+*g:rogue#passgo*
+	1 を指定した場合、大文字または CTRL 移動コマンドを実行したとき、通路の
+	曲がり角では停止しないようになります。
+	0 を指定した場合、通路の曲がり角で停止します。
+	デフォルト: 1
+
+*g:rogue#tombstone*
+	1 を指定した場合、プレイヤーが死んでしまったときに墓標を表示します。
+	0 を指定した場合、墓標を表示しません。
+	デフォルト: 1
+
+*g:rogue#color*
+	1 を指定した場合、ゲームマップをカラーで表示します。
+	0 を指定した場合、カラー表示が無効になります。
+	デフォルト: 1
+
+*g:rogue#fruit*
+	好物の果物の名前を指定します。
+	デフォルト: "こけもも"
+
+------------------------------------------------------------------------------
+ハイライトグループ				*rogue-options-highlight*
+
+以下のハイライトグループを設定することで、各キャラクターを任意の色に変更できま
+す。
+
+*rogueWall*
+	壁と通路の色を設定します。
+	'background' が "dark" の場合のデフォルト: >
+	hi rogueWall	ctermfg=cyan	guifg=cyan
+<	'background' が "light" の場合のデフォルト: >
+	hi rogueWall	ctermfg=blue	guifg=blue
+<
+*rogueFloor*
+	床の色を設定します。
+	'background' が "dark" の場合のデフォルト: >
+	hi rogueFloor	ctermfg=blue	guifg=blue
+<	'background' が "light" の場合のデフォルト: >
+	hi rogueFloor	ctermfg=gray	guifg=gray
+<
+*rogueItem*
+	品物の色を設定します。
+	'background' が "dark" の場合のデフォルト: >
+	hi rogueItem	ctermfg=yellow	guifg=yellow
+<	'background' が "light" の場合のデフォルト: >
+	hi rogueItem	ctermfg=brown	guifg=brown
+<
+*rogueMonster*
+	怪物の色を設定します。
+	'background' が "dark" の場合のデフォルト: >
+	hi rogueMonster	ctermfg=magenta	guifg=magenta
+<	'background' が "light" の場合のデフォルト: >
+	hi rogueMonster	ctermfg=red	guifg=red
+<
+*rogueFighter*
+	プレイヤーの色を設定します。
+	'background' が "dark" の場合のデフォルト: >
+	hi rogueFighter	ctermfg=green	guifg=green
+<	'background' が "light" の場合のデフォルト: >
+	hi rogueFighter	ctermfg=darkgreen	guifg=darkgreen
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

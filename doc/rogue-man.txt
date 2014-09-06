@@ -1,0 +1,78 @@
+*rogue-man.txt*		Man page of Rogue-clone II
+==============================================================================
+								   *rogue-man*
+ROGUE(6)                         Games Manual                         ROGUE(6)
+
+
+
+NAME
+       rogue - Exploring The Dungeons of Doom With a Rogue Clone
+
+SYNOPSIS
+       rogue [ save_file ] [ -s ]
+
+DESCRIPTION
+       This game is a clone of the rogue 5.3 game that is part of the Berkeley
+       Software Distribution (BSD) Tape.
+
+       The command characters are precisely the same as in standard rogue 5.3.
+       h,j,k,l,y,u,b,n  move  you one step.  Capitalize it, and you move until
+       you run into something.  Use the control  key  instead,  and  you  move
+       until you are next to something.
+
+       Whenever the program asks you for an inventory letter, you can type '*'
+       to get a list of the logical choices.  Sometimes,  however,  you  don't
+       want  to  see  that  list, but instead you want to see the list of your
+       scrolls, potions, weapons, or whatever.  In these cases  you  can  type
+       one  of  ?!=:/)]  to see a menu of your scrolls, potions, rings, foods,
+       wands, weapons or armor respectively.  This is especially usefull  when
+       you  know you want to drop a particular item, a scroll for example, but
+       you don't want to pick it from the entire list, just from your  collec-
+       tion of scrolls.
+
+       When you type control-a, you are shown a line that looks like:
+
+                 R-Hp: 6.50, E-Hp: 7.00 (!: 2, V: 0)
+
+       This line refers to Hp-raise averages.  Each time your experience level
+       goes up, your Hp is increased by a random amount not to exceed 10.   If
+       you  are  curious  about  your luck in these raises, you can use the ^A
+       command.  In the example above R-Hp  stands  for  "real  Hp"  which  is
+       exactly  your average Hp raise during the game.  E-Hp stands for effec-
+       tive Hp, and is the same as R-Hp except Hp raises from potions, and Hp-
+       subtractions  from  vampires are factored in.  In the above between the
+       parentheses, it shows that 2 Hp  points  were  given  as  a  result  of
+       quaffing  potions  of  healing,  and that vampires have taken way none.
+       All of these Hp numbers refer to you max Hp number; the rightmost  num-
+       ber  in  Hp:  (15)22  in  the  status  line at the bottom of your rogue
+       screen.
+
+       The 'X' command silently creates  a  file  in  your  current  directory
+       called  rogue.screen.   This file contains a copy of your screen at the
+       time you typed typed the 'X'   This works at absolutely  any  point  in
+       the  program.  It is useful for showing other folks what kind of a mess
+       you got into, or what a great game you were having.  This functionality
+       means that you cannot use the letter 'X' when 'calling' an object some-
+       thing.
+
+       The -s option prints the score file and exits.
+
+       For more detailed directions, read the document A Guide to the Dungeons
+       of Doom.
+
+AUTHOR
+       Tim Stoehr <tims@zues.TEK.COM>
+
+FILES
+       rogue.scores        Score file
+
+SEE ALSO
+       Michael  C. Toy and Kenneth C. R. C. Arnold, A guide to the Dungeons of
+       Doom
+
+
+
+4th Berkeley Distribution        March 4, 1987                        ROGUE(6)
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

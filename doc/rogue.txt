@@ -1,0 +1,174 @@
+*rogue.txt*	Porting of Rogue-clone II for Vim
+
+Version: 1.0
+Author: KATO Noriaki <katono123@gmail.com>
+License: MIT License
+
+						*rogue*
+This Vim plugin is a game that is porting of Rogue-clone II.
+You can enjoy the game on your Vim.
+
+==============================================================================
+CONTENTS					*rogue-contents*
+
+|rogue-howtoplay|		How to Play
+|rogue-options|			Options
+|rogue-options-highlight|	Highlight Groups
+
+------------------------------------------------------------------------------
+REFERENCES					*rogue-references*
+
+|rogue-man|			Man page of Rogue-clone II
+
+|rogue-guide|			A Guide to the Dungeons of Doom
+|rogue-guide-introduction|	Introduction
+|rogue-guide-screen|		What do all those things on the screen mean?
+|rogue-guide-commands|		Commands
+|rogue-guide-fighting|		Fighting
+|rogue-guide-objects|		Objects you can find
+|rogue-guide-scoring|		Scoring
+
+
+==============================================================================
+HOW TO PLAY					*rogue-howtoplay*
+
+*:Rogue*
+	Starts the game.
+
+*:RogueScores*
+	Prints scores only.
+
+*:RogueRestore* [save_file]
+	Restores `save_file` and restarts the game. If `save_file` is omitted,
+	the default saved file |g:rogue#file| is used.
+	The saved file is removed.
+
+*:RogueResume*
+	Resumes the game from the point you suspended it with <C-Z> command.
+
+						*rogue-suspend* *rogue-CTRL-Z*
+<C-Z>
+	A command that suspends the game immediately. This is an original
+	command of rogue.vim.
+
+?
+	The help command that shows a list of all commands.
+
+/
+	A command that shows the meaning of a character on the screen. Press
+	"/" and the key of the character you want to know.
+
+*
+	Whenever the program asks you for an inventory letter, you can type
+	'*' to get a list of the logical choices. Sometimes, however, you
+	don't want to see that list, but instead you want to see the list of
+	your scrolls, potions, weapons, or whatever. In these cases you can
+	type one of ?!=:/)] to see a menu of your scrolls, potions, rings,
+	foods, wands, weapons, or armor respectively.
+
+<Esc>
+	Cancels a command that has not finished yet.
+
+<Space>
+	If you see a "--More--" on the top line, press <Space> key to read the
+	next message.
+
+
+To know about the other commands, see |rogue-guide-commands|.
+
+
+==============================================================================
+OPTIONS						*rogue-options*
+
+Options of rogue.vim can be specified in your .vimrc.
+The "o" command and $ROGUEOPTS are not supported.
+
+*g:rogue#name*
+	Your nickname.
+	default: value of $FIGHTER or login user name
+
+*g:rogue#directory*
+	A directory that a score file, saved file and screen file will be
+	put in.
+	default: home directory
+
+*g:rogue#file*
+	The default file name for saving the game.
+	default: "rogue_vim.save"
+
+*g:rogue#message*
+	Specify a message file you want to use. If a relative path name is
+	specified, the path is from "autoload/rogue" directory.
+	About message file format, see "autoload/rogue/mesg_E".
+	default: If |g:rogue#japanese| is 0 then "mesg_E", otherwise "mesg"
+
+*g:rogue#japanese*
+	If your message file is Japanese, set 1. Otherwise set 0.
+	default: If `v:lang` includes "ja" then 1, otherwise 0
+
+*g:rogue#jump*
+	If this option is set 1, when you use uppercase or CTRL move command
+	the screen will not be updated until the move finishes. This helps the
+	game response will be quickly.
+	default: 0
+
+*g:rogue#passgo*
+	If this option is set 1, when you use uppercase or CTRL move command
+	you will not stop at a turning in passages.
+	default: 1
+
+*g:rogue#tombstone*
+	If this option is set 1, prints the tombstone when you die.
+	default: 1
+
+*g:rogue#color*
+	If you want to disable color, set 0.
+	default: 1
+
+*g:rogue#fruit*
+	Your favorite fruit.
+	default: "slime-mold"
+
+------------------------------------------------------------------------------
+HIGHLIGHT GROUPS				*rogue-options-highlight*
+
+You can change highlight groups of characters to any color.
+
+*rogueWall*
+	Color of walls and passages.
+	default color when 'background' is "dark": >
+	hi rogueWall	ctermfg=cyan	guifg=cyan
+<	default color when 'background' is "light": >
+	hi rogueWall	ctermfg=blue	guifg=blue
+<
+*rogueFloor*
+	Color of floors.
+	default color when 'background' is "dark": >
+	hi rogueFloor	ctermfg=blue	guifg=blue
+<	default color when 'background' is "light": >
+	hi rogueFloor	ctermfg=gray	guifg=gray
+<
+*rogueItem*
+	Color of items.
+	default color when 'background' is "dark": >
+	hi rogueItem	ctermfg=yellow	guifg=yellow
+<	default color when 'background' is "light": >
+	hi rogueItem	ctermfg=brown	guifg=brown
+<
+*rogueMonster*
+	Color of monsters.
+	default color when 'background' is "dark": >
+	hi rogueMonster	ctermfg=magenta	guifg=magenta
+<	default color when 'background' is "light": >
+	hi rogueMonster	ctermfg=red	guifg=red
+<
+*rogueFighter*
+	Color of fighter.
+	default color when 'background' is "dark": >
+	hi rogueFighter	ctermfg=green	guifg=green
+<	default color when 'background' is "light": >
+	hi rogueFighter	ctermfg=darkgreen	guifg=darkgreen
+<
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
