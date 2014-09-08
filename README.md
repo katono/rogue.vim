@@ -36,6 +36,8 @@ And execute this Vim command to make help tags.
 
     :helptags <installed directory>/doc
 
+You can execute `:h rogue` to see this plugin's help.
+
 If you use a Vim plugin manager, follow its way.
 
 
