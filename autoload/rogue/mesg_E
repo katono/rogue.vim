@@ -210,7 +210,7 @@ help()
 134	"S              save game                       ]   print current armor"
 135	"Q              quit                            =   print current rings"
 136	"v              print version information       @   print current stats"
-137	"!              shell escape                    o   examine/set options"
+137	"!              shell escape                    <CTRL>Z   suspend"
 
 identify()
 138	"You"
