@@ -3,6 +3,8 @@ rogue.vim
 
 *"Hello Vimmer, welcome to the Dungeons of Doom..."*
 
+![image](https://raw.github.com/wiki/katono/rogue.vim/image/rogue_vim.png)
+
 
 ## Description
 
