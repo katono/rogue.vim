@@ -18,6 +18,8 @@ CONTENTS					*rogue-contents*
 ------------------------------------------------------------------------------
 REFERENCES					*rogue-references*
 
+These documents are attached to the original Rogue-clone II.
+
 |rogue-man|			Man page of Rogue-clone II
 
 |rogue-guide|			A Guide to the Dungeons of Doom
