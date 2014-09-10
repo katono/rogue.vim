@@ -721,3 +721,7 @@ md_gln()
 file: init.c
 do_args()
 543	"再開できませんでした。"	"Cannot resume"
+
+file: rogue.vim
+rogue#rogue#main
+544	"ゲームが中断されています。再開しますか？"	"The game is suspended. Resume it?"

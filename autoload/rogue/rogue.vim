@@ -12,7 +12,7 @@ function! rogue#rogue#main(args)
 		if a:args ==# '--resume'
 			let resume = 1
 		else
-			let c = confirm("The game is suspended. Resume it?",
+			let c = confirm(luaeval('Rogue.mesg[544]'),
 							\ "&Yes\n&No\n&Cancel", 1)
 			if c == 1
 				let resume = 1
