@@ -6,8 +6,24 @@ function! rogue#rogue#main(args)
 		echo "Sorry. Rogue.vim needs '+lua'."
 		return
 	endif
-	if a:args !=# '--resume' || luaeval('type(Rogue)') !=# 'table'
-			\|| luaeval('tostring(Rogue.suspended)') !=# 'true'
+	let resume = 0
+	if luaeval('type(Rogue)') ==# 'table' &&
+			\ luaeval('tostring(Rogue.suspended)') ==# 'true'
+		if a:args ==# '--resume'
+			let resume = 1
+		else
+			let c = confirm("The game is suspended. Resume it?",
+							\ "&Yes\n&No\n&Cancel", 1)
+			if c == 1
+				let resume = 1
+			elseif c == 2
+				let resume = 0
+			else
+				return
+			endif
+		endif
+	endif
+	if !resume
 		execute 'luafile ' . s:FILE_DIR . 'main.lua'
 		execute 'luafile ' . s:FILE_DIR . 'const.lua'
 		execute 'luafile ' . s:FILE_DIR . 'curses.lua'
