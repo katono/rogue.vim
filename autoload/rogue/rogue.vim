@@ -19,6 +19,7 @@ function! rogue#rogue#main(args)
 			elseif c == 2
 				let resume = 0
 			else
+				echo luaeval('Rogue.mesg[12]')
 				return
 			endif
 		endif
