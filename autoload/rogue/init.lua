@@ -47,6 +47,7 @@ local function do_args(args)
 			break
 		elseif args[i] == '-r' then
 			g.do_restore = true
+			break
 		elseif args[i] == '--resume' then
 			-- failed to resume
 			g.message(g.mesg[543])
