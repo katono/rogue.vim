@@ -390,7 +390,7 @@ function g.call_it()
 	local buf
 	if g.JAPAN then
 		buf = g.get_input_line(g.mesg[111], "", id_table[obj.which_kind].title, false, true)
-		if string.byte(' ') <= buf:byte(1) and buf:byte(1) <= string.byte('~') then
+		if buf ~= '' and string.byte(' ') <= buf:byte(1) and buf:byte(1) <= string.byte('~') then
 			buf = buf .. ' '
 		end
 	else
