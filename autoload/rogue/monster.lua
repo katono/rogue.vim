@@ -196,6 +196,10 @@ end
 
 local function aim_monster(monster)
 	local rn = g.get_room_number(monster.row, monster.col)
+	if rn == g.NO_ROOM then
+		-- fixed original bug: access rooms[-1]
+		return
+	end
 	local r = g.get_rand(0, 12)
 
 	for i = 0, 3 do
