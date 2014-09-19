@@ -287,10 +287,10 @@ function g.draw_magic_map()
 	for i = 0, g.DROWS-1 do
 		for j = 0, g.DCOLS-1 do
 			local s = g.dungeon[i][j]
-			if s[g.HORWALL] or s[g.VERTWALL] or s[g.DOOR] or s[g.TUNNEL] or s[TRAP] or
+			if s[g.HORWALL] or s[g.VERTWALL] or s[g.DOOR] or s[g.TUNNEL] or s[g.TRAP] or
 					s[g.STAIRS] or s[g.MONSTER] then
 				local ch = g.mvinch(i, j)
-				if ch == ' ' or ch:find('^[A-Z]$') or s[TRAP] or s[g.HIDDEN] then
+				if ch == ' ' or ch:find('^[A-Z]$') or s[g.TRAP] or s[g.HIDDEN] then
 					local skip = false
 					local och = ch
 					g.dungeon[i][j][g.HIDDEN] = nil
