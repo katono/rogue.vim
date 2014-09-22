@@ -188,7 +188,7 @@ local function hide_boxed_passage(row1, col1, row2, col2, n)
 				for j = 0, 9 do
 					row = g.get_rand(row1 + row_cut, row2 - row_cut)
 					col = g.get_rand(col1 + col_cut, col2 - col_cut)
-					if g.dungeon[row][col][g.TUNNEL] then
+					if g.dungeon_equals(g.dungeon[row][col], g.TUNNEL) then
 						g.dungeon[row][col][g.HIDDEN] = g.dungeon_desc[g.HIDDEN]
 						break
 					end

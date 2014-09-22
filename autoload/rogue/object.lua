@@ -225,8 +225,8 @@ local function put_gold()
 				for j = 0, 49 do
 					local row = g.get_rand(g.rooms[i].top_row+1, g.rooms[i].bottom_row-1)
 					local col = g.get_rand(g.rooms[i].left_col+1, g.rooms[i].right_col-1)
-					if g.dungeon[row][col][g.FLOOR] or
-							g.dungeon[row][col][g.TUNNEL] then
+					if g.dungeon_equals(g.dungeon[row][col], g.FLOOR) or
+							g.dungeon_equals(g.dungeon[row][col], g.TUNNEL) then
 						plant_gold(row, col, is_maze)
 						break
 					end

@@ -202,6 +202,18 @@ function g.gr_row_col(mask)
 	return r, c
 end
 
+function g.dungeon_equals(dun, t)
+	local found = false
+	for k, v in pairs(dun) do
+		if k == t then
+			found = true
+		else
+			return false
+		end
+	end
+	return found
+end
+
 function g.gr_room()
 	local i
 	repeat
@@ -226,7 +238,8 @@ function g.party_objects(rn)
 		while (not found) and (j < 250) do
 			row = g.get_rand(g.rooms[rn].top_row+1, g.rooms[rn].bottom_row-1)
 			col = g.get_rand(g.rooms[rn].left_col+1, g.rooms[rn].right_col-1)
-			if g.dungeon[row][col][g.FLOOR] or g.dungeon[row][col][g.TUNNEL] then
+			if g.dungeon_equals(g.dungeon[row][col], g.FLOOR) or
+					g.dungeon_equals(g.dungeon[row][col], g.TUNNEL) then
 				found = true
 			end
 

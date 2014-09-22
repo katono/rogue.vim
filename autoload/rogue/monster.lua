@@ -577,7 +577,7 @@ function g.move_mon_to(monster, row, col)
 	end
 	if g.dungeon[row][col][g.DOOR] and
 		g.get_room_number(row, col) ~= g.cur_room and
-		g.dungeon[mrow][mcol][g.FLOOR] and g.blind == 0 then
+		g.dungeon_equals(g.dungeon[mrow][mcol], g.FLOOR) and g.blind == 0 then
 		g.mvaddch(mrow, mcol, ' ')
 	end
 	if g.dungeon[row][col][g.DOOR] then
