@@ -1,6 +1,6 @@
 *rogue.txt*	Porting of Rogue-clone II for Vim
 
-Version: 1.0.0
+Version: 1.0.1
 Author: KATO Noriaki <katono123@gmail.com>
 License: MIT License
 
