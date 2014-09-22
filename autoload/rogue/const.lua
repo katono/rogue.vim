@@ -3,7 +3,6 @@ local g = Rogue -- alias
 g.print_enum = {}
 
 -- g.dungeon
-g.NOTHING  = 0
 g.OBJECT   = 1
 g.MONSTER  = 2
 g.STAIRS   = 3
@@ -15,7 +14,6 @@ g.TUNNEL   = 8
 g.TRAP     = 9
 g.HIDDEN   = 10
 g.dungeon_desc = {
-	[g.NOTHING]  = "NOTHING",
 	[g.OBJECT]   = "OBJECT",
 	[g.MONSTER]  = "MONSTER",
 	[g.STAIRS]   = "STAIRS",
