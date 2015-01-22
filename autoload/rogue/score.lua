@@ -145,7 +145,9 @@ function g.killed_by(monster, other)
 			buf = buf .. g.znum(g.rogue.gold)
 			buf = buf .. g.mesg[496]
 		else
-			buf = buf .. buf2
+			if buf2 ~= '' then
+				buf = buf .. ' ' .. buf2
+			end
 			buf = buf .. string.format(g.mesg[181]:gsub("%%ld", "%%d"), g.rogue.gold)
 		end
 		g.message(buf)
