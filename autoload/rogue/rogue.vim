@@ -79,7 +79,11 @@ function! rogue#rogue#main(args)
 	let save_more       = &more
 	let save_guicursor  = &guicursor
 	set cpo&vim
-	let &encoding   = 'utf-8'
+	if &encoding ==? 'utf-8'
+		let s:needs_iconv = 0
+	else
+		let s:needs_iconv = 1
+	endif
 	let &ruler      = 0
 	let &showmode   = 0
 	let &showcmd    = 0

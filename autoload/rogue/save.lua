@@ -114,7 +114,9 @@ function g.restore(fname)
 	end
 	g.xxx(true)
 	buf = g.xxxx(buf)
+	vim.command('let &encoding = "utf-8"')
 	buf = g.iconv_from_utf8(buf)
+	vim.command('let &encoding = s:save_encoding')
 	local Rogue_copy = assert(g.loadstring('return ' .. buf), g.mesg[508])()
 
 	if g.home_dir ~= Rogue_copy.home_dir then

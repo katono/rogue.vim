@@ -108,9 +108,11 @@ local function read_mesg()
 	end
 
 	if vim then
-		g.save_encoding = vim.eval('s:save_encoding')
-		if vim.eval('&encoding') ~= g.save_encoding then
+		g.save_encoding = g.get_vim_variable('s:save_encoding')
+		local needs_iconv = g.get_vim_variable("s:needs_iconv")
+		if needs_iconv ~= 0 then
 			g.needs_iconv = true
+			vim.command('let &encoding = "utf-8"')
 			for k, v in pairs(g.mesg) do
 				g.mesg[k] = g.iconv_from_utf8(v)
 			end
