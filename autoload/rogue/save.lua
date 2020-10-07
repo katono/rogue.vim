@@ -4,7 +4,7 @@ g.save_file = 'rogue_vim.save'
 
 local function save_into_file(fname)
 	fname = g.expand_fname(fname, g.game_dir)
-	local fp = io.open(fname, "w")
+	local fp = io.open(fname, "wb")
 	if not fp then
 		g.message(g.mesg[503])
 		return
@@ -100,7 +100,7 @@ end
 
 function g.restore(fname)
 	fname = g.expand_fname(fname, g.game_dir)
-	local fp = io.open(fname, "r")
+	local fp = io.open(fname, "rb")
 	if not fp then
 		g.message(g.mesg[504])
 		return false
