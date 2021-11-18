@@ -7,15 +7,24 @@ else
 	g.loadstring = loadstring
 end
 
+function g.get_vim_variable(var)
+	if vim then
+		if vim.eval("exists('" .. var .. "')") ~= 0 then
+			return vim.eval(var)
+		end
+	end
+	return ''
+end
+
 g.bxor = nil
 
 local bit_exists, bit = pcall(require, "bit")
 if bit_exists then
 	g.bxor = bit.bxor
 elseif _VERSION >= 'Lua 5.3' then
-	g.bxor = function(x, y)
-		return x ~ y
-	end
+	local file_dir = g.get_vim_variable("s:FILE_DIR")
+	dofile(file_dir .. "lua53.lua")
+	g.bxor = g.lua53_bxor
 elseif _VERSION >= 'Lua 5.2' then
 	g.bxor = bit32.bxor
 else
@@ -35,15 +44,6 @@ else
 		until x == 0 and y == 0
 		return ret
 	end
-end
-
-function g.get_vim_variable(var)
-	if vim then
-		if vim.eval("exists('" .. var .. "')") ~= 0 then
-			return vim.eval(var)
-		end
-	end
-	return ''
 end
 
 function g.set_vim_variable(var, value)
