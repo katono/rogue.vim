@@ -340,7 +340,7 @@ end
 function g.put_scores(monster, other)
 	local scores = {}
 	local file = g.game_dir .. score_file
-	local fp = io.open(file, "r")
+	local fp = io.open(file, "rb")
 	if fp then
 		local buf = fp:read("*a")
 		g.xxx(true)
@@ -366,7 +366,7 @@ function g.put_scores(monster, other)
 	end
 
 	if rank <= MAX_RANK then
-		fp = io.open(file, "w")
+		fp = io.open(file, "wb")
 		if not fp then
 			g.message(g.mesg[186])
 			sf_error()

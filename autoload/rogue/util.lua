@@ -12,6 +12,10 @@ g.bxor = nil
 local bit_exists, bit = pcall(require, "bit")
 if bit_exists then
 	g.bxor = bit.bxor
+elseif _VERSION >= 'Lua 5.3' then
+	g.bxor = function(x, y)
+		return x ~ y
+	end
 elseif _VERSION >= 'Lua 5.2' then
 	g.bxor = bit32.bxor
 else
