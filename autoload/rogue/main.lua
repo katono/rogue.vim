@@ -37,6 +37,12 @@ local function init_dirs()
 	else
 		g.game_dir = g.game_dir:gsub('\\', '/')
 		g.game_dir = g.game_dir:gsub('~', g.home_dir)
+		if vim then
+			local exists = vim.eval('isdirectory("' .. g.game_dir .. '")')
+			if exists == 0 then
+				vim.command('call mkdir("' .. g.game_dir .. '", "p")')
+			end
+		end
 	end
 
 	if string.char(g.home_dir:byte(#g.home_dir)) ~= '/' then
